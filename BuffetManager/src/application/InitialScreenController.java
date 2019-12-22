@@ -49,8 +49,13 @@ public class InitialScreenController {
 		cadastroClienteStage.show();
 	}
 	
-	public void vender (ActionEvent event) {
-		// TODO
+	public void vender (ActionEvent event) throws IOException {
+		Stage VendaStage = new Stage();
+		Parent root = FXMLLoader.load(getClass().getResource("/application/Venda.fxml"));
+		Scene scene = new Scene(root);
+		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+		VendaStage.setScene(scene);
+		VendaStage.show();
 	}
 	
 	public void gerenciarEstoque (ActionEvent event) {
