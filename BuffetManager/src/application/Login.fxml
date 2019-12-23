@@ -20,7 +20,7 @@
          <font>
             <Font size="18.0" />
          </font></Button>
-      <ImageView fitHeight="163.0" fitWidth="210.0" layoutX="57.0" layoutY="83.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView blendMode="MULTIPLY" fitHeight="163.0" fitWidth="210.0" layoutX="57.0" layoutY="83.0" pickOnBounds="true" preserveRatio="true">
       	<image>
             <Image url="@../img/logo_buffet.jpg" />
       	</image>

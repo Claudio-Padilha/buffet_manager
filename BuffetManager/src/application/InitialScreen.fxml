@@ -10,13 +10,13 @@
 
 <Pane focusTraversable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.InitialScreenController">
    <children>
-      <ImageView fitHeight="290.0" fitWidth="363.0" layoutX="43.0" layoutY="67.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView blendMode="MULTIPLY" fitHeight="290.0" fitWidth="363.0" layoutX="43.0" layoutY="67.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../img/logo_buffet.jpg" />
          </image>
       </ImageView>
       <Label layoutX="17.0" layoutY="24.0" prefHeight="21.0" prefWidth="557.0" text="Buffet Manager 1.0" />
-      <Button fx:id="btnVenda" layoutX="149.0" layoutY="375.0" mnemonicParsing="false" onAction="#vender" prefHeight="31.0" prefWidth="139.0" text="Venda" textFill="#08a832">
+      <Button fx:id="btnVenda" layoutX="147.0" layoutY="365.0" mnemonicParsing="false" onAction="#vender" prefHeight="83.0" prefWidth="139.0" text="Venda" textFill="#08a832">
          <font>
             <Font size="24.0" />
          </font>
@@ -41,11 +41,16 @@
             <Font size="18.0" />
          </font>
       </Button>
-      <Button fx:id="btnEstoque" layoutX="500.0" layoutY="352.0" mnemonicParsing="false" onAction="#gerenciarEstoque" prefHeight="96.0" prefWidth="212.0" text=" GERENCIAR ESTOQUE" textFill="#9a8804">
+      <Button fx:id="btnEstoque" layoutX="499.0" layoutY="304.0" mnemonicParsing="false" onAction="#gerenciarEstoque" prefHeight="61.0" prefWidth="212.0" text=" GERENCIAR ESTOQUE" textFill="#9a8804">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
       <Line endX="341.0" layoutX="444.0" layoutY="255.0" startX="-10.0" />
+      <Button fx:id="btnEstoque1" layoutX="500.0" layoutY="418.0" mnemonicParsing="false" onAction="#gerenciarEstoque" prefHeight="61.0" prefWidth="212.0" text=" GERENCIAR FUNCIONARIOS" textFill="#9a8804">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
    </children>
 </Pane>
