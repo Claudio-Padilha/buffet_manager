@@ -14,9 +14,9 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <TextField focusTraversable="false" layoutX="63.0" layoutY="106.0" prefHeight="31.0" prefWidth="383.0" promptText="Nome" />
-      <TextField focusTraversable="false" layoutX="63.0" layoutY="177.0" prefHeight="31.0" prefWidth="383.0" promptText="Telefone" />
-      <TextField focusTraversable="false" layoutX="63.0" layoutY="245.0" prefHeight="31.0" prefWidth="383.0" promptText="Salário" />
-      <Button layoutX="201.0" layoutY="320.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="96.0" text="Cadastrar" />
+      <TextField fx:id="nomeNovoFuncionario" focusTraversable="false" layoutX="63.0" layoutY="106.0" prefHeight="31.0" prefWidth="383.0" promptText="Nome" />
+      <TextField fx:id="telefoneNovoFuncionario" focusTraversable="false" layoutX="63.0" layoutY="177.0" prefHeight="31.0" prefWidth="383.0" promptText="Telefone" />
+      <TextField fx:id="salarioNovoFuncionario" focusTraversable="false" layoutX="63.0" layoutY="245.0" prefHeight="31.0" prefWidth="383.0" promptText="Salário" />
+      <Button layoutX="201.0" layoutY="320.0" mnemonicParsing="false" onAction="#salvarNovoFuncionario" prefHeight="31.0" prefWidth="96.0" text="Cadastrar" />
    </children>
 </AnchorPane>
