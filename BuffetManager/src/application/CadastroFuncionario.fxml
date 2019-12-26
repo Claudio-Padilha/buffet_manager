@@ -2,21 +2,99 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.CadastroFuncionarioController">
+<AnchorPane prefHeight="550.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.CadastroFuncionarioController">
    <children>
-      <Label layoutX="14.0" layoutY="14.0" prefHeight="21.0" prefWidth="300.0" text="Buffet Manager 1.0" />
-      <Label alignment="CENTER" layoutX="125.0" layoutY="45.0" prefHeight="27.0" prefWidth="249.0" text="CADASTRO DE FUNCIONARIO" textFill="#100aa1" underline="true">
+      <Label layoutX="14.0" layoutY="4.0" prefHeight="21.0" prefWidth="136.0" text="Buffet Manager 1.0" />
+      <Label alignment="CENTER" layoutX="376.0" layoutY="15.0" prefHeight="27.0" prefWidth="249.0" text="FUNCIONARIO" textFill="#100aa1" underline="true">
          <font>
-            <Font size="18.0" />
+            <Font size="24.0" />
          </font>
       </Label>
-      <TextField fx:id="nomeNovoFuncionario" focusTraversable="false" layoutX="63.0" layoutY="106.0" prefHeight="31.0" prefWidth="383.0" promptText="Nome" />
-      <TextField fx:id="telefoneNovoFuncionario" focusTraversable="false" layoutX="63.0" layoutY="177.0" prefHeight="31.0" prefWidth="383.0" promptText="Telefone" />
-      <TextField fx:id="salarioNovoFuncionario" focusTraversable="false" layoutX="63.0" layoutY="245.0" prefHeight="31.0" prefWidth="383.0" promptText="Salário" />
-      <Button layoutX="201.0" layoutY="320.0" mnemonicParsing="false" onAction="#salvarNovoFuncionario" prefHeight="31.0" prefWidth="96.0" text="Cadastrar" />
+      <TabPane layoutX="242.0" layoutY="218.0" prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="60.0">
+        <tabs>
+          <Tab text="Cadastrar">
+               <content>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <TextField fx:id="nomeNovoFuncionario" layoutX="15.0" layoutY="65.0" prefHeight="31.0" prefWidth="619.0" promptText="Nome" />
+                        <TextField fx:id="cpfNovoFuncionario" layoutX="15.0" layoutY="112.0" prefHeight="31.0" prefWidth="309.0" promptText="CPF" />
+                        <TextField fx:id="rgNovoFuncionario" layoutX="334.0" layoutY="112.0" prefHeight="31.0" prefWidth="299.0" promptText="RG" />
+                        <TextField fx:id="enderecoNovoFuncionario" layoutX="15.0" layoutY="161.0" prefHeight="31.0" prefWidth="619.0" promptText="Endereço" />
+                        <TextField fx:id="telefoneNovoFuncionario" layoutX="14.0" layoutY="206.0" prefHeight="31.0" prefWidth="309.0" promptText="Telefone" />
+                        <TextField fx:id="emailNovoFuncionario" layoutX="334.0" layoutY="205.0" prefHeight="31.0" prefWidth="299.0" promptText="Email" />
+                        <TextField fx:id="cargoNovoFuncionario" layoutX="14.0" layoutY="323.0" prefHeight="31.0" prefWidth="310.0" promptText="Cargo" />
+                        <TextField fx:id="salarioNovoFuncionario" layoutX="14.0" layoutY="370.0" prefHeight="31.0" prefWidth="309.0" promptText="Salário" />
+                        <Label alignment="CENTER" layoutX="107.0" layoutY="11.0" prefHeight="35.0" prefWidth="437.0" text="Informações pessoais" textFill="#100aa1">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" layoutX="14.0" layoutY="267.0" prefHeight="35.0" prefWidth="306.0" text="Informações da empresa" textFill="#100aa1">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                        <Button layoutX="422.0" layoutY="321.0" mnemonicParsing="false" onAction="#salvarNovoFuncionario" prefHeight="66.0" prefWidth="136.0" text="Cadastrar" textFill="#119403" underline="true">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Button>
+                        <Button layoutX="498.0" layoutY="22.0" mnemonicParsing="false" onAction="#limparCadastroNovoFuncionario" prefHeight="31.0" prefWidth="136.0" text="Limpar Cadastro" />
+                        <ImageView blendMode="MULTIPLY" fitHeight="270.0" fitWidth="290.0" layoutX="656.0" layoutY="86.0" pickOnBounds="true">
+                           <image>
+                              <Image url="@../img/logo_buffet.jpg" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </AnchorPane>
+               </content></Tab>
+          <Tab text="Consultar">
+               <content>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <TextField fx:id="txtConsultaFuncionario" layoutX="14.0" layoutY="14.0" prefHeight="35.0" prefWidth="632.0" promptText="Nome" />
+                        <Button layoutX="776.0" layoutY="12.0" mnemonicParsing="false" onAction="#consultarFuncionario" prefHeight="31.0" prefWidth="112.0" text="Consultar">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Button>
+                        <TableView fx:id="tabelaFuncionarios" layoutX="4.0" layoutY="64.0" prefHeight="313.0" prefWidth="972.0">
+                          <columns>
+                            <TableColumn fx:id="nomeFuncionarios" prefWidth="151.0" text="Nome" />
+                            <TableColumn fx:id="cpfFuncionarios" prefWidth="115.0" text="CPF" />
+                              <TableColumn fx:id="rgFuncionarios" prefWidth="83.0" text="RG" />
+                              <TableColumn fx:id="enderecoFuncionarios" minWidth="0.0" prefWidth="160.0" text="Endereço" />
+                              <TableColumn fx:id="telefoneFuncionarios" minWidth="0.0" prefWidth="108.0" text="Telefone" />
+                              <TableColumn fx:id="emailFuncionarios" minWidth="0.0" prefWidth="122.0" text="Email" />
+                              <TableColumn fx:id="dataAdmFuncionarios" minWidth="0.0" prefWidth="123.0" text="Contratação" />
+                              <TableColumn fx:id="cargoFuncionarios" minWidth="0.0" prefWidth="109.0" text="Cargo" />
+                          </columns>
+                        </TableView>
+                        <Button layoutX="832.0" layoutY="390.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="115.0" text="Deletar" textFill="#b20404">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Button>
+                        <Button layoutX="695.0" layoutY="390.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="111.0" text="Atualizar" textFill="#289603">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </AnchorPane>
+               </content></Tab>
+            <Tab text="Atualizar" />
+        </tabs>
+      </TabPane>
    </children>
 </AnchorPane>

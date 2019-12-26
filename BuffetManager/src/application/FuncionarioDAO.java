@@ -20,15 +20,20 @@ public class FuncionarioDAO {
 	}
 
 	public void cadastrar(Funcionario f) {
-		String sql = "insert into funcionario (nome, data_contratacao, telefone, salario) values (?, ?, ?, ?)";
+		String sql = "insert into funcionario (nome, cpf, rg, endereco, telefone, email, cargo, data_contratacao, salario) values (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		
 		try {
 			PreparedStatement statement = connection.prepareStatement(sql);
 			
 			statement.setString(1, f.getNome());
-			statement.setDate(2, f.getData());
-			statement.setString(3, f.getTel());
-			statement.setDouble(4, f.getSalario());
+			statement.setString(2, f.getCpf());
+			statement.setString(3, f.getRg());
+			statement.setString(4, f.getEndereco());
+			statement.setString(5, f.getTel());
+			statement.setString(6, f.getEmail());
+			statement.setString(7, f.getCargo());
+			statement.setDate(8, f.getData());
+			statement.setDouble(9, f.getSalario());
 			
 			statement.execute();
 			statement.close();
@@ -73,7 +78,7 @@ public class FuncionarioDAO {
 		}
 	}
 	
-	private List <Funcionario> consultar(String nome) {
+	public List <Funcionario> consultar(String nome) {
 		
 		List <Funcionario> funcionarios = new ArrayList<>();
 		
@@ -86,9 +91,14 @@ public class FuncionarioDAO {
 			
 			while (result.next()) {
 				Funcionario funcionario = new Funcionario();
-				funcionario.setId(result.getInt("id"));
 				funcionario.setNome(result.getString("nome"));
-				funcionario.setData(result.getDate("data_contatacao"));
+				funcionario.setCpf(result.getString("cpf"));
+				funcionario.setRg(result.getString("rg"));
+				funcionario.setEndereco(result.getString("endereco"));
+				funcionario.setTel(result.getString("telefone"));
+				funcionario.setEmail(result.getString("email"));
+				funcionario.setData(result.getDate("data_contratacao"));
+				funcionario.setCargo(result.getString("cargo"));
 				
 				funcionarios.add(funcionario);
 			}
