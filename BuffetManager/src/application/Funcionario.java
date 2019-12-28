@@ -1,6 +1,6 @@
 package application;
 
-public class Funcionario {
+public class Funcionario implements Comparable<Funcionario>{
 	
 	private Integer id;
 	private String nome;
@@ -110,5 +110,10 @@ public class Funcionario {
 	
 	public Double getSalario () {
 		return this.salario;
+	}
+
+	@Override
+	public int compareTo(Funcionario f) {
+		return this.getNome().compareToIgnoreCase(f.getNome());
 	}
 }

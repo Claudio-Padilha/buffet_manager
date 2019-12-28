@@ -1,7 +1,8 @@
 package application;
 
 import java.net.URL;
-import java.util.List;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
@@ -110,7 +111,7 @@ public class CadastroFuncionarioController implements Initializable{
     	if (abaCadastrar.isSelected() || abaConsultar.isSelected()) {
     		abaAtualizar.setDisable(true);
     		
-    		// Limpar cadastro atualizar funcionario
+    		limparCadastroNovoFuncionario();
     	}
     }
 	
@@ -168,19 +169,29 @@ public class CadastroFuncionarioController implements Initializable{
 		salarioNovoFuncionario.clear();
 	}
 	
+	@FXML void limparCadastroAtualizarFuncionario() {
+		nomeAtualizarFuncionario.clear();
+		cpfAtualizarFuncionario.clear();
+		rgAtualizarFuncionario.clear();
+		enderecoAtualizarFuncionario.clear();
+		telefoneAtualizarFuncionario.clear();
+		emailAtualizarFuncionario.clear();
+		cargoAtualizarFuncionario.clear();
+		salarioAtualizarFuncionario.clear();
+	}
+	
 	@FXML void consultarFuncionario() {
 		
 		try {
 			
-			List<Funcionario> resultado = dao.consultar(txtConsultaFuncionario.getText());
+			ArrayList<Funcionario> resultado = (ArrayList<Funcionario>) dao.consultar(txtConsultaFuncionario.getText());
+			Collections.sort(resultado);
 			
-			if (resultado.isEmpty()) {
-				exibirDialogoInformacao("Nenhum funcionário encontrado");
-				
-			}else {
+			if (resultado.isEmpty() ) {
+				exibirDialogoInformacao("Nenhum funcionário encontrado");	
+			}
 				tabelaFuncionarios.setItems(FXCollections.observableList(resultado));
 				
-			}
 		}catch(Exception e) {
 			exibirDialogoErro("Falha na consulta");
 			e.printStackTrace();
