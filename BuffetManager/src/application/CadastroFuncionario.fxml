@@ -20,7 +20,7 @@
             <Font size="24.0" />
          </font>
       </Label>
-      <TabPane layoutX="242.0" layoutY="218.0" prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="60.0">
+      <TabPane fx:id="abas" layoutX="242.0" layoutY="218.0" prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="60.0">
         <tabs>
           <Tab fx:id="abaCadastrar" text="Cadastrar">
                <content>
@@ -75,9 +75,10 @@
                               <TableColumn fx:id="rgFuncionarios" prefWidth="97.0" text="RG" />
                               <TableColumn fx:id="enderecoFuncionarios" minWidth="0.0" prefWidth="168.0" text="Endereço" />
                               <TableColumn fx:id="telefoneFuncionarios" minWidth="0.0" prefWidth="134.0" text="Telefone" />
-                              <TableColumn fx:id="emailFuncionarios" minWidth="0.0" prefWidth="132.0" text="Email" />
-                              <TableColumn fx:id="cargoFuncionarios" minWidth="0.0" prefWidth="106.0" text="Cargo" />
-                              <TableColumn fx:id="idFuncionarios" minWidth="0.0" prefWidth="54.0" text="ID" />
+                              <TableColumn fx:id="emailFuncionarios" minWidth="0.0" prefWidth="106.0" text="Email" />
+                              <TableColumn fx:id="cargoFuncionarios" minWidth="0.0" prefWidth="68.0" text="Cargo" />
+                              <TableColumn fx:id="salarioFuncionarios" minWidth="0.0" prefWidth="75.0" text="Salario" />
+                              <TableColumn fx:id="idFuncionarios" minWidth="0.0" prefWidth="43.0" text="ID" />
                           </columns>
                         </TableView>
                         <Button layoutX="832.0" layoutY="390.0" mnemonicParsing="false" onAction="#deletarFuncionario" prefHeight="31.0" prefWidth="115.0" text="Deletar" textFill="#b20404">
@@ -85,7 +86,7 @@
                               <Font size="18.0" />
                            </font>
                         </Button>
-                        <Button layoutX="695.0" layoutY="390.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="111.0" text="Atualizar" textFill="#289603">
+                        <Button layoutX="695.0" layoutY="390.0" mnemonicParsing="false" onAction="#exibirAbaAtualizacao" prefHeight="31.0" prefWidth="111.0" text="Atualizar" textFill="#289603">
                            <font>
                               <Font size="18.0" />
                            </font>
@@ -93,7 +94,44 @@
                      </children>
                   </AnchorPane>
                </content></Tab>
-            <Tab fx:id="abaAtualizar" disable="true" text="Atualizar" />
+            <Tab fx:id="abaAtualizar" disable="true" text="Atualizar">
+               <content>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <TextField fx:id="nomeAtualizarFuncionario" layoutX="15.0" layoutY="65.0" prefHeight="31.0" prefWidth="619.0" promptText="Nome" />
+                        <TextField fx:id="cpfAtualizarFuncionario" layoutX="14.0" layoutY="128.0" prefHeight="31.0" prefWidth="309.0" promptText="CPF" />
+                        <TextField fx:id="rgAtualizarFuncionario" layoutX="334.0" layoutY="137.0" prefHeight="31.0" prefWidth="299.0" promptText="RG" />
+                        <TextField fx:id="enderecoAtualizarFuncionario" layoutX="14.0" layoutY="196.0" prefHeight="31.0" prefWidth="619.0" promptText="Endereço" />
+                        <TextField fx:id="telefoneAtualizarFuncionario" layoutX="14.0" layoutY="267.0" prefHeight="31.0" prefWidth="309.0" promptText="Telefone" />
+                        <TextField fx:id="emailAtualizarFuncionario" layoutX="334.0" layoutY="267.0" prefHeight="31.0" prefWidth="299.0" promptText="Email" />
+                        <TextField fx:id="cargoAtualizarFuncionario" layoutX="14.0" layoutY="341.0" prefHeight="31.0" prefWidth="310.0" promptText="Cargo" />
+                        <TextField fx:id="salarioAtualizarFuncionario" layoutX="336.0" layoutY="341.0" prefHeight="31.0" prefWidth="309.0" promptText="Salário" />
+                        <Label alignment="CENTER" layoutX="272.0" layoutY="14.0" prefHeight="35.0" prefWidth="437.0" text="Atualização de Cadastro" textFill="#100aa1">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                        <Button layoutX="422.0" layoutY="384.0" mnemonicParsing="false" onAction="#atualizarFuncionario" prefHeight="43.0" prefWidth="136.0" text="Salvar" textFill="#119403" underline="true">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Button>
+                        <ImageView blendMode="MULTIPLY" fitHeight="270.0" fitWidth="290.0" layoutX="656.0" layoutY="86.0" pickOnBounds="true">
+                           <image>
+                              <Image url="@../img/logo_buffet.jpg" />
+                           </image>
+                        </ImageView>
+                        <Label layoutX="15.0" layoutY="39.0" prefHeight="21.0" prefWidth="50.0" text="Nome:" underline="true" />
+                        <Label layoutX="15.0" layoutY="102.0" prefHeight="21.0" prefWidth="39.0" text="CPF:" underline="true" />
+                        <Label layoutX="334.0" layoutY="102.0" prefHeight="21.0" prefWidth="34.0" text="RG:" underline="true" />
+                        <Label layoutX="12.0" layoutY="168.0" prefHeight="21.0" prefWidth="85.0" text="Endereço:" underline="true" />
+                        <Label layoutX="12.0" layoutY="238.0" prefHeight="21.0" prefWidth="85.0" text="Telefone:" underline="true" />
+                        <Label layoutX="336.0" layoutY="238.0" prefHeight="21.0" prefWidth="85.0" text="Email:" underline="true" />
+                        <Label layoutX="12.0" layoutY="307.0" prefHeight="21.0" prefWidth="57.0" text="Cargo:" underline="true" />
+                        <Label layoutX="336.0" layoutY="307.0" prefHeight="21.0" prefWidth="64.0" text="Salário:" underline="true" />
+                     </children>
+                  </AnchorPane>
+               </content></Tab>
         </tabs>
       </TabPane>
    </children>

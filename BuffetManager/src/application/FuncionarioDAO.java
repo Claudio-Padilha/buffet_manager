@@ -39,16 +39,21 @@ public class FuncionarioDAO {
 		}
 	}
 	
-	private void atualizar(Funcionario f) {
-		String sql = "update into funcionario set nome=?, telefone=? where id=?";
+	public void atualizar(Funcionario f) {
+		String sql = "update funcionario set nome=?, cpf=?, rg=?, endereco=?, telefone=?, email=?, cargo=?, salario=? where id=?";
 		
 		try {
 			PreparedStatement statement = connection.prepareStatement(sql);
 			
 			statement.setString(1, f.getNome());
-			// statement.setDate(2, f.getData());
-			statement.setString(3, f.getTel());
-			statement.setInt(4, f.getId());
+			statement.setString(2, f.getCpf());
+			statement.setString(3, f.getRg());
+			statement.setString(4, f.getEndereco());
+			statement.setString(5, f.getTel());
+			statement.setString(6, f.getEmail());
+			statement.setString(7, f.getCargo());
+			statement.setDouble(8, f.getSalario());
+			statement.setInt(9, f.getId());
 			
 			statement.execute();
 			statement.close();
@@ -96,6 +101,7 @@ public class FuncionarioDAO {
 				// funcionario.setData(result.getDate("dataContratacao"));
 				funcionario.setCargo(result.getString("cargo"));
 				funcionario.setId(result.getInt("id"));
+				funcionario.setSalario(result.getDouble("salario"));
 				
 				funcionarios.add(funcionario);
 			}
