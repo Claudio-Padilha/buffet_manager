@@ -1,8 +1,5 @@
 package application;
 
-import java.sql.Date;
-import java.time.LocalDate;
-
 public class Funcionario {
 	
 	private Integer id;
@@ -13,7 +10,7 @@ public class Funcionario {
 	private String tel;
 	private String email;
 	private String cargo;
-	private java.sql.Date dataContratacao;
+	// private java.sql.Date dataContratacao;
 	private Double salario;
 	
 	public Funcionario(String nome, String cpf, String rg, String endereco,
@@ -26,11 +23,11 @@ public class Funcionario {
 		this.setEmail(email);
 		this.setCargo(cargo);
 		this.setSalario(salario);
-		this.dataContratacao = java.sql.Date.valueOf(java.time.LocalDate.now());
+		// this.dataContratacao = java.sql.Date.valueOf(java.time.LocalDate.now());
 	}
 	
 	public Funcionario() {
-		this.dataContratacao = java.sql.Date.valueOf(java.time.LocalDate.now());
+		// this.dataContratacao = java.sql.Date.valueOf(java.time.LocalDate.now());
 	}
 
 	public Integer getId () {
@@ -97,13 +94,13 @@ public class Funcionario {
 		return this.cargo;
 	}
 	
-	public void setData (java.sql.Date dataContratacao) {
+	/* public void setData (java.sql.Date dataContratacao) {
 		this.dataContratacao = dataContratacao;
-	}
+	} */
 	
-	public java.sql.Date getData () {
+	/* public java.sql.Date getData () {
 		return this.dataContratacao;
-	}
+	} */
 	
 	
 	

@@ -22,7 +22,7 @@
       </Label>
       <TabPane layoutX="242.0" layoutY="218.0" prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="60.0">
         <tabs>
-          <Tab text="Cadastrar">
+          <Tab fx:id="abaCadastrar" text="Cadastrar">
                <content>
                   <AnchorPane prefHeight="200.0" prefWidth="200.0">
                      <children>
@@ -58,7 +58,7 @@
                      </children>
                   </AnchorPane>
                </content></Tab>
-          <Tab text="Consultar">
+          <Tab fx:id="abaConsultar" text="Consultar">
                <content>
                   <AnchorPane prefHeight="200.0" prefWidth="200.0">
                      <children>
@@ -70,17 +70,17 @@
                         </Button>
                         <TableView fx:id="tabelaFuncionarios" layoutX="4.0" layoutY="64.0" prefHeight="313.0" prefWidth="972.0">
                           <columns>
-                            <TableColumn fx:id="nomeFuncionarios" prefWidth="151.0" text="Nome" />
-                            <TableColumn fx:id="cpfFuncionarios" prefWidth="115.0" text="CPF" />
-                              <TableColumn fx:id="rgFuncionarios" prefWidth="83.0" text="RG" />
-                              <TableColumn fx:id="enderecoFuncionarios" minWidth="0.0" prefWidth="160.0" text="Endereço" />
-                              <TableColumn fx:id="telefoneFuncionarios" minWidth="0.0" prefWidth="108.0" text="Telefone" />
-                              <TableColumn fx:id="emailFuncionarios" minWidth="0.0" prefWidth="122.0" text="Email" />
-                              <TableColumn fx:id="dataAdmFuncionarios" minWidth="0.0" prefWidth="123.0" text="Contratação" />
-                              <TableColumn fx:id="cargoFuncionarios" minWidth="0.0" prefWidth="109.0" text="Cargo" />
+                            <TableColumn fx:id="nomeFuncionarios" prefWidth="171.0" text="Nome" />
+                            <TableColumn fx:id="cpfFuncionarios" prefWidth="109.0" text="CPF" />
+                              <TableColumn fx:id="rgFuncionarios" prefWidth="97.0" text="RG" />
+                              <TableColumn fx:id="enderecoFuncionarios" minWidth="0.0" prefWidth="168.0" text="Endereço" />
+                              <TableColumn fx:id="telefoneFuncionarios" minWidth="0.0" prefWidth="134.0" text="Telefone" />
+                              <TableColumn fx:id="emailFuncionarios" minWidth="0.0" prefWidth="132.0" text="Email" />
+                              <TableColumn fx:id="cargoFuncionarios" minWidth="0.0" prefWidth="106.0" text="Cargo" />
+                              <TableColumn fx:id="idFuncionarios" minWidth="0.0" prefWidth="54.0" text="ID" />
                           </columns>
                         </TableView>
-                        <Button layoutX="832.0" layoutY="390.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="115.0" text="Deletar" textFill="#b20404">
+                        <Button layoutX="832.0" layoutY="390.0" mnemonicParsing="false" onAction="#deletarFuncionario" prefHeight="31.0" prefWidth="115.0" text="Deletar" textFill="#b20404">
                            <font>
                               <Font size="18.0" />
                            </font>
@@ -93,7 +93,7 @@
                      </children>
                   </AnchorPane>
                </content></Tab>
-            <Tab text="Atualizar" />
+            <Tab fx:id="abaAtualizar" disable="true" text="Atualizar" />
         </tabs>
       </TabPane>
    </children>

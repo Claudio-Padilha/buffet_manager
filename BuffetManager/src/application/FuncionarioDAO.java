@@ -4,11 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.time.LocalDate;
-import java.time.ZoneId;
-import java.time.temporal.TemporalAccessor;
 import java.util.ArrayList;
-import java.sql.Date;
 import java.util.List;
 
 public class FuncionarioDAO {
@@ -20,7 +16,7 @@ public class FuncionarioDAO {
 	}
 
 	public void cadastrar(Funcionario f) {
-		String sql = "insert into funcionario (nome, cpf, rg, endereco, telefone, email, cargo, data_contratacao, salario) values (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		String sql = "insert into funcionario (nome, cpf, rg, endereco, telefone, email, cargo, salario) values (?, ?, ?, ?, ?, ?, ?, ?)";
 		
 		try {
 			PreparedStatement statement = connection.prepareStatement(sql);
@@ -32,8 +28,8 @@ public class FuncionarioDAO {
 			statement.setString(5, f.getTel());
 			statement.setString(6, f.getEmail());
 			statement.setString(7, f.getCargo());
-			statement.setDate(8, f.getData());
-			statement.setDouble(9, f.getSalario());
+			statement.setDouble(8, f.getSalario());
+			// statement.setDate(9, f.getData());
 			
 			statement.execute();
 			statement.close();
@@ -50,7 +46,7 @@ public class FuncionarioDAO {
 			PreparedStatement statement = connection.prepareStatement(sql);
 			
 			statement.setString(1, f.getNome());
-			statement.setDate(2, f.getData());
+			// statement.setDate(2, f.getData());
 			statement.setString(3, f.getTel());
 			statement.setInt(4, f.getId());
 			
@@ -62,7 +58,7 @@ public class FuncionarioDAO {
 		}
 	}
 	
-	private void deletar(Integer id) {
+	public void deletar(Integer id) {
 		String sql = "delete from funcionario where id=?";
 		
 		try {
@@ -97,8 +93,9 @@ public class FuncionarioDAO {
 				funcionario.setEndereco(result.getString("endereco"));
 				funcionario.setTel(result.getString("telefone"));
 				funcionario.setEmail(result.getString("email"));
-				funcionario.setData(result.getDate("data_contratacao"));
+				// funcionario.setData(result.getDate("dataContratacao"));
 				funcionario.setCargo(result.getString("cargo"));
+				funcionario.setId(result.getInt("id"));
 				
 				funcionarios.add(funcionario);
 			}

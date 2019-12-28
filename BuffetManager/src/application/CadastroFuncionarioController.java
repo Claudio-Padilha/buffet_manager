@@ -1,9 +1,8 @@
 package application;
 
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.Date;
 import java.util.List;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 import javafx.collections.FXCollections;
@@ -11,6 +10,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.Tab;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -22,14 +23,15 @@ public class CadastroFuncionarioController implements Initializable{
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		dao = new FuncionarioDAO();
 		
+		idFuncionarios.setCellValueFactory(new PropertyValueFactory<>("id"));
 		nomeFuncionarios.setCellValueFactory(new PropertyValueFactory<>("nome"));
 		cpfFuncionarios.setCellValueFactory(new PropertyValueFactory<>("cpf"));
 		rgFuncionarios.setCellValueFactory(new PropertyValueFactory<>("rg"));
 		enderecoFuncionarios.setCellValueFactory(new PropertyValueFactory<>("endereco"));
-		telefoneFuncionarios.setCellValueFactory(new PropertyValueFactory<>("telefone"));
+		telefoneFuncionarios.setCellValueFactory(new PropertyValueFactory<>("tel"));
 		emailFuncionarios.setCellValueFactory(new PropertyValueFactory<>("email"));
 		cargoFuncionarios.setCellValueFactory(new PropertyValueFactory<>("cargo"));
-		dataAdmFuncionarios.setCellValueFactory(new PropertyValueFactory<>("data_contratacao"));
+		// dataAdmFuncionarios.setCellValueFactory(new PropertyValueFactory<>("data_contratacao"));
 		
 	}
 	
@@ -51,6 +53,30 @@ public class CadastroFuncionarioController implements Initializable{
 	
 	@FXML private TextField txtConsultaFuncionario;	
 	
+	
+	@FXML private TextField nomeAtualizarFuncionario;
+	
+	@FXML private TextField cpfAtualizarFuncionario;
+	
+	@FXML private TextField rgAtualizarFuncionario;
+	
+	@FXML private TextField enderecoAtualizarFuncionario;
+	
+	@FXML private TextField telefoneAtualizarFuncionario;
+	
+	@FXML private TextField emailAtualizarFuncionario;
+	
+	@FXML private TextField cargoAtualizarFuncionario;
+	
+	@FXML private TextField salarioAtualizarFuncionario;	
+	
+	
+	@FXML private Tab abaCadastrar;
+	
+	@FXML private Tab abaConsultar;
+	
+	@FXML private Tab abaAtualizar;
+	
 	@FXML private TableView<Funcionario> tabelaFuncionarios;	
     
     @FXML private TableColumn<Funcionario, String> nomeFuncionarios;
@@ -67,13 +93,26 @@ public class CadastroFuncionarioController implements Initializable{
     
     @FXML private TableColumn<Funcionario, String> cargoFuncionarios;
     
-    @FXML private TableColumn<Funcionario, Date> dataAdmFuncionarios;
+    @FXML private TableColumn<Funcionario, Integer> idFuncionarios;
+    
+    // @FXML private TableColumn<Funcionario, Date> dataAdmFuncionarios;
+    
     
     @FXML private ResourceBundle resources;
 
     @FXML private URL location;
+    
 
     private FuncionarioDAO dao;
+    
+    
+    @FXML void gerenciarAbas() {
+    	if (abaCadastrar.isSelected() || abaConsultar.isSelected()) {
+    		abaAtualizar.setDisable(true);
+    		
+    		// Limpar cadastro atualizar funcionario
+    	}
+    }
 	
 	@FXML void salvarNovoFuncionario() {
 		Funcionario funcionario = new Funcionario();
@@ -97,6 +136,25 @@ public class CadastroFuncionarioController implements Initializable{
 		}
 		
 		
+	}
+	
+	@FXML void deletarFuncionario() {
+		if (tabelaFuncionarios.getSelectionModel().getSelectedItem() == null) {
+			exibirDialogoErro("Nenhum Funcionário Selecionado");
+			
+		}else {
+			if (exibirDialogoConfirmacao("Confirmar exclusão do funcionário selecionado?")) {
+				try {
+					dao.deletar(tabelaFuncionarios.getSelectionModel().selectedItemProperty().get().getId());
+					exibirDialogoConfirmacao("Funcionário deletado com sucesso!");
+					consultarFuncionario();
+					
+				} catch (Exception e) {
+					exibirDialogoErro("Falha ao deletar o funcionário!");
+					e.printStackTrace();
+				}
+			}
+		}
 	}
 	
 	@FXML void limparCadastroNovoFuncionario() {
@@ -145,5 +203,19 @@ public class CadastroFuncionarioController implements Initializable{
 		alert.setContentText(erro);
 		
 		alert.showAndWait();
+	}
+	
+	private boolean exibirDialogoConfirmacao (String confirmacao) {
+		Alert alert = new Alert(AlertType.CONFIRMATION);
+		alert.setTitle("Confirmação");
+		alert.setHeaderText(null);
+		alert.setContentText(confirmacao);
+		
+		Optional<ButtonType> opcao = alert.showAndWait();
+		
+		if (opcao.get() == ButtonType.OK) 
+			return true;
+		
+		return false;
 	}
 }

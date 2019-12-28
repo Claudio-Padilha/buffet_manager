@@ -24,7 +24,7 @@ public class LoginController {
 	@FXML private Button btnLogin;
 	
 	public void Login(ActionEvent event) throws Exception{
-		if (txtUserName.getText().equals("janir") && txtPassword.getText().equals("123456")) {
+		if (txtUserName.getText().equals("") && txtPassword.getText().equals("")) {
 			Stage firstMenuStage = new Stage();
 			Parent root = FXMLLoader.load(getClass().getResource("/application/InitialScreen.fxml"));
 			Scene scene = new Scene(root);
