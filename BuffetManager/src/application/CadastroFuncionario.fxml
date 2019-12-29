@@ -94,7 +94,7 @@
                      </children>
                   </AnchorPane>
                </content></Tab>
-            <Tab fx:id="abaAtualizar" disable="true" text="Atualizar">
+            <Tab fx:id="abaAtualizar" disable="true" onSelectionChanged="#gerenciarAbas" text="Atualizar">
                <content>
                   <AnchorPane prefHeight="200.0" prefWidth="200.0">
                      <children>

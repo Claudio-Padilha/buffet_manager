@@ -111,12 +111,12 @@ public class CadastroFuncionarioController implements Initializable{
     
     
     
-    @FXML void gerenciarAbas() {
-    	if (abaCadastrar.isSelected() || abaConsultar.isSelected()) {
-    		abaAtualizar.setDisable(true);
-    		
-    		limparCadastroNovoFuncionario();
-    	}
+    @FXML void gerenciarAbas() {	
+		if (abaAtualizar.isDisable())
+			abaAtualizar.setDisable(false);
+		else
+			abaAtualizar.setDisable(true);
+		limparCadastroNovoFuncionario();
     }
     
     @FXML void exibirAbaAtualizacao() {
@@ -127,7 +127,6 @@ public class CadastroFuncionarioController implements Initializable{
 			exibirDialogoErro("Nenhum Funcionário Selecionado");
 			
 		}else {
-			abaAtualizar.setDisable(false);
 			nomeAtualizarFuncionario.setText(funcionarioSelecionado.getNome());
 			cpfAtualizarFuncionario.setText(funcionarioSelecionado.getCpf());
 			rgAtualizarFuncionario.setText(funcionarioSelecionado.getRg());
@@ -178,6 +177,7 @@ public class CadastroFuncionarioController implements Initializable{
 			dao.atualizar(funcionarioSelecionado);
 			exibirDialogoInformacao ("Funcionário atualizado com sucesso!");
 			abas.getSelectionModel().select(abaConsultar);
+			abaAtualizar.setDisable(true);
 			consultarFuncionario();
 		}catch (Exception e){
 			exibirDialogoErro("Falha ao atualizar funcionário");
