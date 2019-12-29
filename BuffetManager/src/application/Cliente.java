@@ -1,15 +1,26 @@
 package application;
 
-public class Cliente {
+public class Cliente implements Comparable<Cliente>{
 	
+	private Integer id;
 	private String nome;
 	private String tel;
 	private String email;
+	private String endereco;
 	
-	public Cliente(String nome, String tel, String email) {
+	public Cliente(String nome, String tel, String email, String endereco) {
 		this.setNome(nome);
 		this.setTel(tel);
 		this.setEmail(email);
+		this.setEndereco(endereco);
+	}
+	
+	public Integer getId () {
+		return this.id;
+	}
+	
+	public void setId (Integer id) {
+		this.id = id;
 	}
 	
 	public void setNome (String nome) {
@@ -31,5 +42,17 @@ public class Cliente {
 	}
 	public String getEmail () {
 		return this.email;
+	}
+	
+	public void setEndereco (String endereco) {
+		this.endereco = endereco;
+	}
+	public String getEndereco () {
+		return this.endereco;
+	}
+
+	@Override
+	public int compareTo(Cliente c) {
+		return this.getNome().compareToIgnoreCase(c.getNome());
 	}
 }

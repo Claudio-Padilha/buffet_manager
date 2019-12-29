@@ -3,15 +3,11 @@ package application;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Optional;
 import java.util.ResourceBundle;
 
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
-import javafx.scene.control.ButtonType;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TableColumn;
@@ -20,6 +16,10 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 public class CadastroFuncionarioController implements Initializable{
+	
+	private FuncionarioDAO dao;
+    
+	private Funcionario funcionarioSelecionado;
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
@@ -39,76 +39,44 @@ public class CadastroFuncionarioController implements Initializable{
 	}
 	
 	@FXML private TextField nomeNovoFuncionario;
-	
 	@FXML private TextField cpfNovoFuncionario;
-	
 	@FXML private TextField rgNovoFuncionario;
-	
 	@FXML private TextField enderecoNovoFuncionario;
-	
 	@FXML private TextField telefoneNovoFuncionario;
-	
 	@FXML private TextField emailNovoFuncionario;
-	
 	@FXML private TextField cargoNovoFuncionario;
-	
 	@FXML private TextField salarioNovoFuncionario;
-	
 	@FXML private TextField txtConsultaFuncionario;	
 	
-	
 	@FXML private TextField nomeAtualizarFuncionario;
-	
 	@FXML private TextField cpfAtualizarFuncionario;
-	
 	@FXML private TextField rgAtualizarFuncionario;
-	
 	@FXML private TextField enderecoAtualizarFuncionario;
-	
 	@FXML private TextField telefoneAtualizarFuncionario;
-	
 	@FXML private TextField emailAtualizarFuncionario;
-	
 	@FXML private TextField cargoAtualizarFuncionario;
-	
 	@FXML private TextField salarioAtualizarFuncionario;	
-	
 	
 	@FXML private TabPane abas;
 	
 	@FXML private Tab abaCadastrar;
-	
 	@FXML private Tab abaConsultar;
-	
 	@FXML private Tab abaAtualizar;
 	
 	@FXML private TableView<Funcionario> tabelaFuncionarios;	
-    
     @FXML private TableColumn<Funcionario, String> nomeFuncionarios;
-    
     @FXML private TableColumn<Funcionario, String> cpfFuncionarios;
-    
     @FXML private TableColumn<Funcionario, String> rgFuncionarios;
-    
     @FXML private TableColumn<Funcionario, String> enderecoFuncionarios;
-    
     @FXML private TableColumn<Funcionario, String> telefoneFuncionarios;
-    
     @FXML private TableColumn<Funcionario, String> emailFuncionarios;
-    
     @FXML private TableColumn<Funcionario, String> cargoFuncionarios;
-    
     @FXML private TableColumn<Funcionario, Integer> idFuncionarios;
-    
     @FXML private TableColumn<Funcionario, Double> salarioFuncionarios;
-    
     // @FXML private TableColumn<Funcionario, Date> dataAdmFuncionarios;
     
-    
     @FXML private ResourceBundle resources;
-
     @FXML private URL location;
-    
     
     
     @FXML void gerenciarAbas() {	
@@ -120,11 +88,10 @@ public class CadastroFuncionarioController implements Initializable{
     }
     
     @FXML void exibirAbaAtualizacao() {
-    	
     	funcionarioSelecionado = tabelaFuncionarios.getSelectionModel().getSelectedItem();
     	
     	if (funcionarioSelecionado == null) {
-			exibirDialogoErro("Nenhum Funcionário Selecionado");
+    		InitialScreenController.exibirDialogoErro("Nenhum Funcionário Selecionado");
 			
 		}else {
 			nomeAtualizarFuncionario.setText(funcionarioSelecionado.getNome());
@@ -140,23 +107,17 @@ public class CadastroFuncionarioController implements Initializable{
     }
 	
 	@FXML void salvarNovoFuncionario() {
-		Funcionario funcionario = new Funcionario();
-		
-		funcionario.setNome(nomeNovoFuncionario.getText());
-		funcionario.setCpf(cpfNovoFuncionario.getText());
-		funcionario.setRg(rgNovoFuncionario.getText());
-		funcionario.setEndereco(enderecoNovoFuncionario.getText());
-		funcionario.setTel(telefoneNovoFuncionario.getText());
-		funcionario.setEmail(emailNovoFuncionario.getText());
-		funcionario.setCargo(cargoNovoFuncionario.getText());
-		funcionario.setSalario(Double.parseDouble(salarioNovoFuncionario.getText()));
+		Funcionario funcionario = new Funcionario(nomeNovoFuncionario.getText(), cpfNovoFuncionario.getText(), rgNovoFuncionario.getText(),
+											      enderecoNovoFuncionario.getText(), telefoneNovoFuncionario.getText(), 
+											      emailNovoFuncionario.getText(),
+											      cargoNovoFuncionario.getText(), Double.parseDouble(salarioNovoFuncionario.getText()));
 		
 		try {
 			dao.cadastrar(funcionario);
-			exibirDialogoInformacao ("Funcionário Cadastrado com sucesso!");
+			InitialScreenController.exibirDialogoInformacao ("Funcionário Cadastrado com sucesso!");
 			limparCadastroNovoFuncionario();
 		}catch (Exception e){
-			exibirDialogoErro("Falha ao cadastrar funcionário");
+			InitialScreenController.exibirDialogoErro("Falha ao cadastrar funcionário");
 			e.printStackTrace();
 		}
 		
@@ -175,29 +136,29 @@ public class CadastroFuncionarioController implements Initializable{
 		
 		try {
 			dao.atualizar(funcionarioSelecionado);
-			exibirDialogoInformacao ("Funcionário atualizado com sucesso!");
+			InitialScreenController.exibirDialogoInformacao ("Funcionário atualizado com sucesso!");
 			abas.getSelectionModel().select(abaConsultar);
 			abaAtualizar.setDisable(true);
 			consultarFuncionario();
 		}catch (Exception e){
-			exibirDialogoErro("Falha ao atualizar funcionário");
+			InitialScreenController.exibirDialogoErro("Falha ao atualizar funcionário");
 			e.printStackTrace();
 		}
 	}
 	
 	@FXML void deletarFuncionario() {
 		if (tabelaFuncionarios.getSelectionModel().getSelectedItem() == null) {
-			exibirDialogoErro("Nenhum Funcionário Selecionado");
+			InitialScreenController.exibirDialogoErro("Nenhum Funcionário Selecionado");
 			
 		}else {
-			if (exibirDialogoConfirmacao("Confirmar exclusão do funcionário selecionado?")) {
+			if (InitialScreenController.exibirDialogoConfirmacao("Confirmar exclusão do funcionário selecionado?")) {
 				try {
 					dao.deletar(tabelaFuncionarios.getSelectionModel().selectedItemProperty().get().getId());
-					exibirDialogoConfirmacao("Funcionário deletado com sucesso!");
+					InitialScreenController.exibirDialogoConfirmacao("Funcionário deletado com sucesso!");
 					consultarFuncionario();
 					
 				} catch (Exception e) {
-					exibirDialogoErro("Falha ao deletar o funcionário!");
+					InitialScreenController.exibirDialogoErro("Falha ao deletar o funcionário!");
 					e.printStackTrace();
 				}
 			}
@@ -215,71 +176,20 @@ public class CadastroFuncionarioController implements Initializable{
 		salarioNovoFuncionario.clear();
 	}
 	
-	@FXML void limparCadastroAtualizarFuncionario() {
-		nomeAtualizarFuncionario.clear();
-		cpfAtualizarFuncionario.clear();
-		rgAtualizarFuncionario.clear();
-		enderecoAtualizarFuncionario.clear();
-		telefoneAtualizarFuncionario.clear();
-		emailAtualizarFuncionario.clear();
-		cargoAtualizarFuncionario.clear();
-		salarioAtualizarFuncionario.clear();
-	}
-	
 	@FXML void consultarFuncionario() {
-		
 		try {
 			
 			ArrayList<Funcionario> resultado = (ArrayList<Funcionario>) dao.consultar(txtConsultaFuncionario.getText());
 			Collections.sort(resultado);
 			
 			if (resultado.isEmpty() ) {
-				exibirDialogoInformacao("Nenhum funcionário encontrado");	
+				InitialScreenController.exibirDialogoInformacao("Nenhum funcionário encontrado");	
 			}
 				tabelaFuncionarios.setItems(FXCollections.observableList(resultado));
 				
 		}catch(Exception e) {
-			exibirDialogoErro("Falha na consulta");
+			InitialScreenController.exibirDialogoErro("Falha na consulta");
 			e.printStackTrace();
 		}
-	}
-	
-	
-	
-	private FuncionarioDAO dao;
-	    
-	private Funcionario funcionarioSelecionado;
-	
-	
-	private void exibirDialogoInformacao (String informacao) {
-		Alert alert = new Alert(AlertType.INFORMATION);
-		alert.setTitle("Informação");
-		alert.setHeaderText(null);
-		alert.setContentText(informacao);
-		
-		alert.showAndWait();
-	}
-	
-	private void exibirDialogoErro (String erro) {
-		Alert alert = new Alert(AlertType.ERROR);
-		alert.setTitle("Erro");
-		alert.setHeaderText(null);
-		alert.setContentText(erro);
-		
-		alert.showAndWait();
-	}
-	
-	private boolean exibirDialogoConfirmacao (String confirmacao) {
-		Alert alert = new Alert(AlertType.CONFIRMATION);
-		alert.setTitle("Confirmação");
-		alert.setHeaderText(null);
-		alert.setContentText(confirmacao);
-		
-		Optional<ButtonType> opcao = alert.showAndWait();
-		
-		if (opcao.get() == ButtonType.OK) 
-			return true;
-		
-		return false;
 	}
 }

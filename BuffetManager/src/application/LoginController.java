@@ -30,6 +30,7 @@ public class LoginController {
 			Scene scene = new Scene(root);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			firstMenuStage.setScene(scene);
+			firstMenuStage.setTitle("Buffet Manager");
 			firstMenuStage.show();
 			Main.getStage().close();
 		}else {
