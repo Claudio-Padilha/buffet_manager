@@ -14,7 +14,7 @@
 
 <AnchorPane prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.CadastroClienteController">
    <children>
-      <Label layoutX="21.0" layoutY="20.0" prefHeight="21.0" prefWidth="300.0" text="Buffet Manager 1.0" />
+      <Label layoutX="10.0" layoutY="13.0" prefHeight="21.0" prefWidth="107.0" text="Buffet Manager 1.0" />
       <Label alignment="CENTER" layoutX="287.0" layoutY="13.0" prefHeight="27.0" prefWidth="126.0" text="CLIENTE" textFill="#100aa1" underline="true">
          <font>
             <Font size="24.0" />

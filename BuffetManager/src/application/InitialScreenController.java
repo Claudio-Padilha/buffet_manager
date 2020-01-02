@@ -24,7 +24,7 @@ public class InitialScreenController {
 	
 	@FXML private Button btnCadCliente;
 	
-	@FXML private Button btnEstoque;
+	@FXML private Button btnProduto;
 	
 	public void cadastrarFuncionario (ActionEvent event) throws IOException {
 		Stage cadastroFuncionarioStage = new Stage();

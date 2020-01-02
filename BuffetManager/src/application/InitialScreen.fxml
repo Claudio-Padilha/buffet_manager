@@ -26,30 +26,30 @@
             <Font name="Arial Black" size="24.0" />
          </font>
       </Label>
-      <Button fx:id="btnCadFuncionario" layoutX="541.0" layoutY="80.0" mnemonicParsing="false" onAction="#cadastrarFuncionario" prefHeight="31.0" prefWidth="129.0" text="Funcionário" textFill="#9a8804">
+      <Button fx:id="btnCadFuncionario" layoutX="540.0" layoutY="201.0" mnemonicParsing="false" onAction="#cadastrarFuncionario" prefHeight="31.0" prefWidth="129.0" text="Funcionário" textFill="#9a8804">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <Button fx:id="btnCadFornecedor" layoutX="541.0" layoutY="135.0" mnemonicParsing="false" onAction="#cadastrarFornecedor" prefHeight="31.0" prefWidth="129.0" text="Fornecedor" textFill="#9a8804">
+      <Button fx:id="btnCadFornecedor" layoutX="540.0" layoutY="147.0" mnemonicParsing="false" onAction="#cadastrarFornecedor" prefHeight="31.0" prefWidth="129.0" text="Fornecedor" textFill="#9a8804">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <Button fx:id="btnCadCliente" layoutX="541.0" layoutY="189.0" mnemonicParsing="false" onAction="#cadastrarCliente" prefHeight="31.0" prefWidth="129.0" text="Cliente" textFill="#9a8804">
+      <Button fx:id="btnCadCliente" layoutX="540.0" layoutY="92.0" mnemonicParsing="false" onAction="#cadastrarCliente" prefHeight="31.0" prefWidth="129.0" text="Cliente" textFill="#9a8804">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <Button fx:id="btnEstoque" layoutX="499.0" layoutY="304.0" mnemonicParsing="false" onAction="#gerenciarEstoque" prefHeight="61.0" prefWidth="212.0" text=" GERENCIAR ESTOQUE" textFill="#9a8804">
+      <Button fx:id="btnProduto" layoutX="540.0" layoutY="255.0" mnemonicParsing="false" onAction="#gerenciarEstoque" prefHeight="40.0" prefWidth="129.0" text="Produto" textFill="#9a8804">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <Line endX="341.0" layoutX="444.0" layoutY="255.0" startX="-10.0" />
-      <Button fx:id="btnEstoque1" layoutX="500.0" layoutY="418.0" mnemonicParsing="false" onAction="#gerenciarEstoque" prefHeight="61.0" prefWidth="212.0" text=" GERENCIAR FUNCIONARIOS" textFill="#9a8804">
+      <Line endX="341.0" layoutX="439.0" layoutY="320.0" startX="-10.0" />
+      <Button fx:id="btnEstoque1" layoutX="522.0" layoutY="376.0" mnemonicParsing="false" onAction="#gerenciarEstoque" prefHeight="61.0" prefWidth="166.0" text="Relatórios" textFill="#992e06">
          <font>
-            <Font size="14.0" />
+            <Font size="18.0" />
          </font>
       </Button>
    </children>
