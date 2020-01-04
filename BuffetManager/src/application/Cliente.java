@@ -1,6 +1,6 @@
 package application;
 
-public class Cliente implements Comparable<Cliente>{
+public class Cliente implements  Comparable<Cliente>{
 	
 	private Integer id;
 	private String nome;
