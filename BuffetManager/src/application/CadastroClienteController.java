@@ -68,8 +68,6 @@ public class CadastroClienteController implements Initializable{
 			InitialScreenController.exibirDialogoErro("Falha ao cadastrar cliente");
 			e.printStackTrace();
 		}
-		
-		
 	}
 	
 	@FXML void consultarCliente() {

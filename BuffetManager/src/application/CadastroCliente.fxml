@@ -69,12 +69,12 @@
                               <Font size="18.0" />
                            </font>
                         </Button>
-                        <Button layoutX="555.0" layoutY="331.0" mnemonicParsing="false" onAction="#deletarCliente" prefHeight="39.0" prefWidth="102.0" text="Deletar" textFill="#b20404">
+                        <Button layoutX="547.0" layoutY="340.0" mnemonicParsing="false" onAction="#deletarCliente" prefHeight="39.0" prefWidth="102.0" text="Deletar" textFill="#af0505">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Button>
-                        <Button layoutX="429.0" layoutY="331.0" mnemonicParsing="false" onAction="#exibirAbaAtualizacaoCliente" text="Atualizar" textFill="#289603">
+                        <Button layoutX="420.0" layoutY="340.0" mnemonicParsing="false" onAction="#exibirAbaAtualizacaoCliente" text="Atualizar" textFill="#289603">
                            <font>
                               <Font size="18.0" />
                            </font>

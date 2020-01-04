@@ -5,14 +5,15 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.CadastroProdutoController">
    <children>
       <Label layoutX="14.0" layoutY="7.0" prefHeight="21.0" prefWidth="107.0" text="Buffet Manager 1.0" />
       <Label alignment="CENTER" layoutX="237.0" layoutY="18.0" prefHeight="27.0" prefWidth="126.0" text="PRODUTO" textFill="#100aa1" underline="true">
@@ -20,22 +21,22 @@
             <Font size="24.0" />
          </font>
       </Label>
-      <TabPane layoutX="5.0" layoutY="63.0" prefHeight="320.0" prefWidth="590.0" tabClosingPolicy="UNAVAILABLE">
+      <TabPane fx:id="abasProduto" layoutX="5.0" layoutY="63.0" prefHeight="320.0" prefWidth="590.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
-          <Tab text="Cadastrar">
+          <Tab fx:id="abaCadastrarProduto" text="Cadastrar">
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <TextField layoutX="28.0" layoutY="121.0" prefWidth="247.0" promptText="Nome" />
-                        <TextField layoutX="28.0" layoutY="170.0" prefHeight="25.0" prefWidth="126.0" promptText="Preço" />
-                        <ComboBox layoutX="28.0" layoutY="72.0" prefWidth="150.0" />
+                        <TextField fx:id="nomeNovoProduto" layoutX="28.0" layoutY="121.0" prefWidth="247.0" promptText="Nome" />
+                        <TextField fx:id="precoNovoProduto" layoutX="28.0" layoutY="170.0" prefHeight="25.0" prefWidth="126.0" promptText="Preço" />
+                        <ComboBox fx:id="comboBoxCategoria" layoutX="28.0" layoutY="72.0" prefWidth="150.0" promptText="Categoria" />
                         <Label layoutX="28.0" layoutY="46.0" prefHeight="17.0" prefWidth="126.0" text="Selecione a categoria:" />
                         <Label layoutX="231.0" layoutY="14.0" text="Cadastro de Produto" textFill="#100aa1">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <Button layoutX="375.0" layoutY="216.0" mnemonicParsing="false" text="Cadastrar">
+                        <Button layoutX="375.0" layoutY="216.0" mnemonicParsing="false" onAction="#salvarNovoproduto" text="Cadastrar">
                            <font>
                               <Font size="18.0" />
                            </font>
@@ -49,14 +50,61 @@
                   </AnchorPane>
             </content>
           </Tab>
-          <Tab text="Consultar">
+          <Tab fx:id="abaConsultarProduto" text="Consultar">
             <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TextField fx:id="txtConsultaProduto" layoutX="14.0" layoutY="14.0" prefHeight="25.0" prefWidth="276.0" promptText="Produto" />
+                        <Button layoutX="344.0" layoutY="11.0" mnemonicParsing="false" onAction="#consultarProduto" text="Consultar">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Button>
+                        <TableView fx:id="tabelaProdutos" layoutX="6.0" layoutY="54.0" prefHeight="189.0" prefWidth="580.0">
+                          <columns>
+                            <TableColumn fx:id="nomeProdutos" prefWidth="239.0" text="Nome" />
+                            <TableColumn fx:id="precoProdutos" prefWidth="128.0" text="Preço" />
+                              <TableColumn fx:id="categoriaProdutos" prefWidth="155.66668701171875" text="Categoria" />
+                              <TableColumn fx:id="idProdutos" prefWidth="59.33331298828125" text="ID" />
+                          </columns>
+                        </TableView>
+                        <Button layoutX="492.0" layoutY="254.0" mnemonicParsing="false" onAction="#deletarProduto" text="Deletar" textFill="#af0505">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Button>
+                        <Button layoutX="386.0" layoutY="254.0" mnemonicParsing="false" onAction="#exibirAbaAtualizacaoProduto" text="Atualizar" textFill="#289603">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Button>
+                     </children></AnchorPane>
             </content>
           </Tab>
-            <Tab text="Atualizar">
+            <Tab fx:id="abaAtualizarProduto" disable="true" onSelectionChanged="#gerenciarAbasProduto" text="Atualizar">
                <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TextField fx:id="nomeAtualizarProduto" layoutX="28.0" layoutY="121.0" prefWidth="247.0" promptText="Nome" />
+                        <TextField fx:id="precoAtualizarProduto" layoutX="28.0" layoutY="170.0" prefHeight="25.0" prefWidth="126.0" promptText="Preço" />
+                        <ComboBox fx:id="comboBoxAtualizarCategoria" layoutX="28.0" layoutY="72.0" prefWidth="150.0" promptText="Categoria" />
+                        <Label layoutX="28.0" layoutY="46.0" prefHeight="17.0" prefWidth="126.0" text="Selecione a categoria:" />
+                        <Label layoutX="198.0" layoutY="14.0" prefHeight="20.0" prefWidth="194.0" text="Atualizar Cadastro de Produto" textFill="#100aa1">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Button layoutX="399.0" layoutY="195.0" mnemonicParsing="false" onAction="#atualizarProduto" text="Salvar">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Button>
+                        <ImageView blendMode="MULTIPLY" fitHeight="150.0" fitWidth="200.0" layoutX="325.0" layoutY="62.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../img/logo_buffet.jpg" />
+                           </image>
+                        </ImageView>
+                     </children></AnchorPane>
                </content>
             </Tab>
         </tabs>

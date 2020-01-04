@@ -56,6 +56,16 @@ public class InitialScreenController {
 		cadastroClienteStage.show();
 	}
 	
+	public void cadastrarProduto (ActionEvent event) throws IOException {
+		Stage cadastroClienteStage = new Stage();
+		Parent root = FXMLLoader.load(getClass().getResource("/application/CadastroProduto.fxml"));
+		Scene scene = new Scene(root);
+		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+		cadastroClienteStage.setTitle("Cadastro de Produtos");
+		cadastroClienteStage.setScene(scene);
+		cadastroClienteStage.show();
+	}
+	
 	public void vender (ActionEvent event) throws IOException {
 		Stage VendaStage = new Stage();
 		Parent root = FXMLLoader.load(getClass().getResource("/application/Venda.fxml"));

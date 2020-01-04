@@ -41,7 +41,7 @@
             <Font size="18.0" />
          </font>
       </Button>
-      <Button fx:id="btnProduto" layoutX="540.0" layoutY="255.0" mnemonicParsing="false" onAction="#gerenciarEstoque" prefHeight="40.0" prefWidth="129.0" text="Produto" textFill="#9a8804">
+      <Button fx:id="btnProduto" layoutX="540.0" layoutY="255.0" mnemonicParsing="false" onAction="#cadastrarProduto" prefHeight="40.0" prefWidth="129.0" text="Produto" textFill="#9a8804">
          <font>
             <Font size="18.0" />
          </font>

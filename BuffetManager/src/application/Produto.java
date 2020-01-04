@@ -8,9 +8,15 @@ public class Produto implements Comparable<Produto> {
 	String categoria;
 	
 	public Produto (String nome, Double preco, String categoria) {
-		
+		setNome(nome);
+		setPreco(preco);
+		setCategoria(categoria);
 	}
 	
+	public Produto() {
+
+	}
+
 	public Integer getId() {
 		return this.id;
 	}
