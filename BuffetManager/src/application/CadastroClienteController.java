@@ -70,7 +70,7 @@ public class CadastroClienteController implements Initializable{
 		}
 	}
 	
-	@FXML void consultarCliente() {
+	@FXML void consultarCliente(){
 		try {
 			
 			ArrayList<Cliente> resultado = (ArrayList<Cliente>) dao.consultar(txtConsultaCliente.getText());
