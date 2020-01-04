@@ -15,7 +15,7 @@ public class FornecedorDAO {
 		connection = new ConnectionFactory().getConnection();
 	}
 	
-	public void cadastrarFornecedor(Fornecedor f) {
+	public void cadastrarFornecedor(Fornecedor f) { 
 		String sql = "insert into fornecedores (nome, cnpj, endereco, telefone, email, infoprodutos) values (?, ?, ?, ?, ?, ?)";
 		
 		try {
